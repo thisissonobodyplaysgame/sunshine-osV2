@@ -198,6 +198,8 @@ body::before {
     <div class="app" data-app="chatgpt" style="background-image:url('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/chatgpt-icon.png')"></div>
     <div class="app" data-app="nowgg" style="background-image:url('https://play-lh.googleusercontent.com/7cIIPlWm4m7AGqVpEsIfyL-HW4cQla4ucXnfalMft1TMIYQIlf2vqgmthlZgbNAQoaQ=w240-h480-rw')"></div>
     <div class="app" data-app="geforce" style="background-image:url('https://play-lh.googleusercontent.com/_-b_HQXrVyyhZSHj_BoE9u_-cxkcHDH_yLX5rDjJsFMIfsCNQs9F3QP4JvEFcWaSIz0=w240-h480-rw')"></div>
+    <div class="app" data-app="discord" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoCkY_K9TX2dN21sxK2Np0a2vqnKKHGWP7Ow&s')"></div>
+    <div class="app" data-app="senshi" style="background-image:url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a0a4547a-06c5-4740-b87a-ca9c4fa0171e/dduaesk-2b3e85d2-3116-4eb5-8260-f413d1fc670e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9hMGE0NTQ3YS0wNmM1LTQ3NDAtYjg3YS1jYTljNGZhMDE3MWUvZGR1YWVzay0yYjNlODVkMi0zMTE2LTRlYjUtODI2MC1mNDEzZDFmYzY3MGUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.vReffTSSKpde4w8EwFxz_CttxlLay8fXOq0goYh6rsg')"></div>
 </div>
 
 <div class="app-window" id="psify">
@@ -258,6 +260,14 @@ apps.forEach(app => {
         }
         if(appId === 'geforce') {
             window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fplay.geforcenow.com%2Fmall%2F#%2Flayout%2Fgames', '_blank');
+            return;
+        }
+        if(appId === 'discord') {
+            window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fdiscord.com%2F', '_blank');
+            return;
+        }
+        if(appId === 'senshi') {
+            window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fsenshi.live%2F', '_blank');
             return;
         }
 
