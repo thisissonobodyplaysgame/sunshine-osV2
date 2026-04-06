@@ -204,12 +204,7 @@ body::before {
 
 <div class="app-window" id="psify">
     <button class="close-btn">Close</button>
-    <iframe src="https://thisissonobodyplaysgame.github.io/psify/"></iframe>
-</div>
-
-<div class="app-window" id="spotify">
-    <button class="close-btn">Close</button>
-    <iframe src="https://thisissonobodyplaysgame.github.io/cinifyv2/#/home"></iframe>
+    <iframe src="https://thisissonobodyplaysgame.github.io/Chicken/"></iframe>
 </div>
 
 <div class="app-window" id="chatgpt">
@@ -252,6 +247,10 @@ apps.forEach(app => {
         }
         if(appId === 'google') {
             window.open('http://blockedmath.b-cdn.net/#home', '_blank');
+            return;
+        }
+        if(appId === 'spotify') {
+            window.open('https://learningisnotfun.b-cdn.net', '_blank');
             return;
         }
         if(appId === 'nowgg') {
