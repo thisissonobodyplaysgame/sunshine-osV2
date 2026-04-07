@@ -283,10 +283,10 @@ apps.forEach(app => {
         if(id === 'netflix') return window.open('https://mathiscoolz.b-cdn.net/');
         if(id === 'google') return window.open('http://blockedmath.b-cdn.net/#home');
         if(id === 'spotify') return window.open('https://learningisnotfun.b-cdn.net');
-        if(id === 'nowgg') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fnowgg.fun');
-        if(id === 'geforce') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fplay.geforcenow.com');
-        if(id === 'discord') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fdiscord.com');
-        if(id === 'senshi') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fsenshi.live');
+        if(id === 'nowgg') return window.open('https://flux-math.b-cdn.net/embed.html?url=https://nowgg.fun');
+        if(id === 'geforce') return window.open('https://flux-math.b-cdn.net/embed.html?url=https://play.geforcenow.com');
+        if(id === 'discord') return window.open('https://flux-math.b-cdn.net/embed.html?url=https://discord.com');
+        if(id === 'senshi') return window.open('https://flux-math.b-cdn.net/embed.html?url=https://senshi.live');
 
         document.querySelectorAll('.app-window').forEach(w => w.classList.remove('show'));
         document.getElementById(id).classList.add('show');
