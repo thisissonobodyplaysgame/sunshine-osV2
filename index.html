@@ -27,6 +27,76 @@ body::before {
     z-index: -1;
 }
 
+#startup {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to top, #1a001f, #ff5e62, #ff9966);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200000;
+    cursor: none;
+}
+
+.sun {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffd27f, #ff7e5f);
+    box-shadow: 0 0 60px rgba(255,150,100,0.8);
+    animation: sunRise 2.5s ease forwards;
+}
+
+.start-text {
+    margin-top: 30px;
+    font-size: 28px;
+    letter-spacing: 4px;
+    opacity: 0;
+    animation: fadeInText 1.5s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.enter-btn {
+    margin-top: 40px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    border: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+    cursor: none;
+    opacity: 0;
+    animation: fadeInText 1.5s ease forwards;
+    animation-delay: 1.6s;
+    transition: all 0.25s ease;
+}
+
+.enter-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255,180,120,0.6);
+}
+
+.enter-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes sunRise {
+    from { transform: translateY(200px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInText {
+    to { opacity: 1; }
+}
+
+@keyframes fadeOutStartup {
+    to { opacity: 0; visibility: hidden; }
+}
+
 #cursor {
     width: 14px;
     height: 14px;
@@ -34,10 +104,9 @@ body::before {
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 100000;
+    z-index: 300000;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 15px rgba(255,255,255,0.6);
-    transition: transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .cursor-trail {
@@ -47,7 +116,7 @@ body::before {
     background: rgba(255,255,255,0.3);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 99999;
+    z-index: 299999;
     animation: fadeOut 0.5s forwards;
 }
 
@@ -61,12 +130,6 @@ body::before {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 96px;
-    letter-spacing: 3px;
-    font-weight: 500;
-    opacity: 0.9;
-    text-align: center;
-    color: #FFFFFF;
-    text-shadow: 0 0 10px rgba(0,0,0,0.7);
 }
 
 .day {
@@ -75,8 +138,6 @@ body::before {
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
-    letter-spacing: 4px;
-    opacity: 0.7;
 }
 
 .dock {
@@ -100,17 +161,10 @@ body::before {
     background-position: center;
     background-color: rgba(255,255,255,0.1);
     transition: 0.2s ease;
-    position: relative;
 }
 
 .app:hover {
     transform: scale(1.15);
-    background-color: rgba(255,255,255,0.2);
-    box-shadow: 0 0 12px rgba(255,255,255,0.2);
-}
-
-.app:active {
-    transform: scale(0.95);
 }
 
 .app-window {
@@ -121,14 +175,8 @@ body::before {
     width: 80%;
     height: 80%;
     background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(5px);
     border-radius: 12px;
     z-index: 9998;
-    color: white;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    animation: fadeIn 0.3s ease forwards;
 }
 
 .app-window.show {
@@ -145,24 +193,10 @@ body::before {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: rgba(0,0,0,0.7);
-    border: none;
+    background: black;
     color: white;
-    font-size: 18px;
+    border: none;
     padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease, opacity 0.3s ease;
-    z-index: 10001;
-}
-
-.app-window .close-btn:hover {
-    background: rgba(0,0,0,0.9);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95);}
-    to { opacity: 1; transform: scale(1);}
 }
 
 #fpsCounter {
@@ -170,18 +204,19 @@ body::before {
     bottom: 15px;
     right: 15px;
     padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0,0,0,0.6);
     border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    color: white;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
     z-index: 100000;
 }
 </style>
 </head>
 <body>
+
+<div id="startup">
+    <div class="sun"></div>
+    <div class="start-text">SUNSHINE OS</div>
+    <button class="enter-btn" onclick="enterOS()">ENTER</button>
+</div>
 
 <div id="cursor"></div>
 
@@ -213,6 +248,12 @@ body::before {
 </div>
 
 <script>
+function enterOS() {
+    const startup = document.getElementById("startup");
+    startup.style.animation = "fadeOutStartup 1s ease forwards";
+    setTimeout(() => startup.style.display = "none", 1000);
+}
+
 const cursor = document.getElementById("cursor");
 document.addEventListener("mousemove", e => {
     cursor.style.left = e.clientX + "px";
@@ -228,10 +269,8 @@ document.addEventListener("mousemove", e => {
 
 function updateTime() {
     const now = new Date();
-    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const day = now.toLocaleDateString([], { weekday: 'long' });
-    document.getElementById("time").textContent = time;
-    document.getElementById("day").textContent = day.toUpperCase();
+    document.getElementById("time").textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById("day").textContent = now.toLocaleDateString([], { weekday: 'long' }).toUpperCase();
 }
 setInterval(updateTime, 1000);
 updateTime();
@@ -239,69 +278,37 @@ updateTime();
 const apps = document.querySelectorAll('.app');
 apps.forEach(app => {
     app.addEventListener('click', () => {
-        const appId = app.dataset.app;
+        const id = app.dataset.app;
 
-        if(appId === 'netflix') {
-            window.open('https://mathiscoolz.b-cdn.net/', '_blank');
-            return;
-        }
-        if(appId === 'google') {
-            window.open('http://blockedmath.b-cdn.net/#home', '_blank');
-            return;
-        }
-        if(appId === 'spotify') {
-            window.open('https://learningisnotfun.b-cdn.net', '_blank');
-            return;
-        }
-        if(appId === 'nowgg') {
-            window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fnowgg.fun%2Fapps%2Fa%2F19900%2Fb.html', '_blank');
-            return;
-        }
-        if(appId === 'geforce') {
-            window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fplay.geforcenow.com%2Fmall%2F#%2Flayout%2Fgames', '_blank');
-            return;
-        }
-        if(appId === 'discord') {
-            window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fdiscord.com%2F', '_blank');
-            return;
-        }
-        if(appId === 'senshi') {
-            window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fsenshi.live%2F', '_blank');
-            return;
-        }
+        if(id === 'netflix') return window.open('https://mathiscoolz.b-cdn.net/');
+        if(id === 'google') return window.open('http://blockedmath.b-cdn.net/#home');
+        if(id === 'spotify') return window.open('https://learningisnotfun.b-cdn.net');
+        if(id === 'nowgg') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fnowgg.fun');
+        if(id === 'geforce') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fplay.geforcenow.com');
+        if(id === 'discord') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fdiscord.com');
+        if(id === 'senshi') return window.open('https://flux-math.b-cdn.net/scramjet/https%3A%2F%2Fsenshi.live');
 
-        const allWindows = document.querySelectorAll('.app-window');
-        allWindows.forEach(win => win.classList.remove('show'));
-
-        const windowEl = document.getElementById(appId);
-        windowEl.classList.add('show');
+        document.querySelectorAll('.app-window').forEach(w => w.classList.remove('show'));
+        document.getElementById(id).classList.add('show');
     });
 });
 
-const closeBtns = document.querySelectorAll('.close-btn');
-closeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        btn.parentElement.classList.remove('show');
-    });
+document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.onclick = () => btn.parentElement.classList.remove('show');
 });
 
-let lastFrame = performance.now();
-let frames = 0;
-
-function updateFPS() {
+let last = performance.now(), frames = 0;
+function fps() {
     const now = performance.now();
     frames++;
-
-    if (now - lastFrame >= 1000) {
+    if(now - last >= 1000){
         document.getElementById("fpsCounter").textContent = frames + " FPS";
         frames = 0;
-        lastFrame = now;
+        last = now;
     }
-
-    requestAnimationFrame(updateFPS);
+    requestAnimationFrame(fps);
 }
-
-updateFPS();
+fps();
 </script>
 
 </body>
