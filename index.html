@@ -218,6 +218,8 @@ body {
 <!-- FULLSCREEN APPS -->
 <div class="fullscreen-app" id="netflix"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://mathiscoolz.b-cdn.net/"></iframe></div>
 <div class="fullscreen-app" id="psify"><button class="close-btn">Close</button><iframe src="https://thisissonobodyplaysgame.github.io/Chicken/"></iframe></div>
+<div class="fullscreen-app" id="google"><button class="close-btn">Close</button><iframe src="https://blockedmath.b-cdn.net/#home"></iframe></div>
+<div class="fullscreen-app" id="spotify"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://music.youtube.com/?hl=en"></iframe></div>
 <div class="fullscreen-app" id="chatgpt"><button class="close-btn">Close</button><iframe src="https://notegpt.io/ai-homework-helper"></iframe></div>
 <div class="fullscreen-app" id="geforce"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://play.geforcenow.com"></iframe></div>
 <div class="fullscreen-app" id="discord"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://discord.com"></iframe></div>
@@ -282,10 +284,17 @@ document.querySelectorAll('.app').forEach(app=>{
     app.onclick=()=>{
         const id=app.dataset.app;
         if(id==='settings') return openSettings();
-        if(id==='google') return window.open('http://blockedmath.b-cdn.net/#home');
-        if(id==='spotify') return window.open('https://learningisnotfun.b-cdn.net');
         const win=document.getElementById(id);
         if(win) win.classList.add('show');
+
+        // TAB CLOAK
+        if(cloaks[id]){
+            document.title = cloaks[id].title;
+            const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+            link.rel = 'icon';
+            link.href = cloaks[id].icon;
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
     };
 });
 
@@ -329,15 +338,22 @@ const cloaks = {
 
 /* BACKGROUND PREVIEW */
 document.querySelectorAll(".bg-preview").forEach(preview=>{
-    preview.onclick = () => {
-        document.body.style.backgroundImage = `url(${preview.dataset.bg})`;
-    };
+    preview.onclick = () => { document.body.style.backgroundImage = `url(${preview.dataset.bg})`; };
 });
 
 /* OPEN APP BY ID */
 function openApp(id){
     const win=document.getElementById(id);
     if(win) win.classList.add('show');
+
+    // TAB CLOAK
+    if(cloaks[id]){
+        document.title = cloaks[id].title;
+        const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+        link.rel = 'icon';
+        link.href = cloaks[id].icon;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
 }
 </script>
 
