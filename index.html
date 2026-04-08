@@ -162,7 +162,7 @@ body {
     cursor: pointer;
 }
 
-/* SETTINGS */
+
 .bg-preview {
     width: 120px;
     height: 80px;
@@ -208,14 +208,14 @@ body {
 <div class="app" data-app="settings" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/2/23/System_Preferences_icon.png/250px-System_Preferences_icon.png')"></div>
 </div>
 
-<!-- APP LIBRARY -->
+
 <div class="app-library" id="library">
 <button class="close-btn" onclick="closeLibrary()">Close</button>
 <h2>App Library</h2>
 <div class="library-grid" id="libraryGrid"></div>
 </div>
 
-<!-- FULLSCREEN APPS -->
+
 <div class="fullscreen-app" id="netflix"><button class="close-btn">Close</button><iframe src="https://noneblocks.b-cdn.net/embed.html?url=https://mathiscoolz.b-cdn.net/"></iframe></div>
 <div class="fullscreen-app" id="psify"><button class="close-btn">Close</button><iframe src="https://thisissonobodyplaysgame.github.io/Chicken/"></iframe></div>
 <div class="fullscreen-app" id="chatgpt"><button class="close-btn">Close</button><iframe src="https://notegpt.io/ai-homework-helper"></iframe></div>
@@ -226,7 +226,7 @@ body {
 <div class="fullscreen-app" id="blooket"><button class="close-btn">Close</button><iframe src="https://noneblocks.b-cdn.net/embed.html?url=https://blooketbot.schoolcheats.net"></iframe></div>
 <div class="fullscreen-app" id="gta"><button class="close-btn">Close</button><iframe src="https://noneblocks.b-cdn.net/embed.html?url=https://t9os.space/gtavc"></iframe></div>
 
-<!-- FULLSCREEN SETTINGS APP -->
+
 <div class="fullscreen-app" id="settings">
     <button class="close-btn">Close</button>
     <div style="padding: 40px; color: white; font-family: Arial, sans-serif;">
@@ -258,14 +258,14 @@ body {
 </div>
 
 <script>
-/* STARTUP */
+
 function enterOS(){ const startup=document.getElementById("startup"); startup.style.animation="fadeOutStartup 1s ease forwards"; setTimeout(()=>startup.style.display="none",1000); }
 
-/* CURSOR */
+
 const cursor=document.getElementById("cursor");
 document.addEventListener("mousemove",e=>{ cursor.style.left=e.clientX+"px"; cursor.style.top=e.clientY+"px"; });
 
-/* CLOCK */
+
 function updateTime(){
     const now=new Date();
     document.getElementById("time").textContent=now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
@@ -274,10 +274,10 @@ function updateTime(){
 setInterval(updateTime,1000);
 updateTime();
 
-/* PANIC KEY */
+
 document.addEventListener("keydown", e=>{ if(e.key==='`'){ window.location.href="https://www.google.com"; } });
 
-/* APP CLICKING */
+
 document.querySelectorAll('.app').forEach(app=>{
     app.onclick=()=>{
         const id=app.dataset.app;
@@ -289,16 +289,16 @@ document.querySelectorAll('.app').forEach(app=>{
     };
 });
 
-/* CLOSE BUTTONS */
+
 document.querySelectorAll('.close-btn').forEach(btn=>{ btn.onclick=()=>{ btn.parentElement.classList.remove('show'); }; });
 
-/* LIBRARY */
+
 const library=document.getElementById("library");
 const grid=document.getElementById("libraryGrid");
 function openLibrary(){library.classList.add("show");}
 function closeLibrary(){library.classList.remove("show");}
 
-/* POPULATE LIBRARY */
+
 grid.innerHTML = "";
 const allApps = [
     ...document.querySelectorAll(".dock .app"),
@@ -315,27 +315,37 @@ allApps.forEach(app => {
     grid.appendChild(clone);
 });
 
-/* SETTINGS */
 function openSettings(){ document.getElementById('settings').classList.add('show'); }
 
-/* TAB CLOAK */
+
 document.getElementById("tabCloak").addEventListener("change", e=>{
     switch(e.target.value){
-        case "gmail": document.title="Gmail - Inbox"; break;
-        case "google": document.title="Google"; break;
-        case "schoology": document.title="Schoology"; break;
-        default: document.title="Sunshine OS";
+        case "gmail": 
+            document.title = "Gmail - Inbox"; 
+            setFavicon("https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"); 
+            break;
+        case "google": 
+            document.title = "Google"; 
+            setFavicon("https://www.google.com/favicon.ico"); 
+            break;
+        case "schoology": 
+            document.title = "Schoology"; 
+            setFavicon("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACVElEQVR4Ae3WA4ycURiF4TVr27ZtIyijBrVtu0HtRrVt27bttRln32xOkjXv3Whv8mTmar4zM78cErULoW3xD+EI0+sMzdXDL8QiOoko+OAGZqEGnBwy29jUF0FYgon4jPWaa4cQrMEwjEhgNBbhOH7gG5aiVFYC/EJlOOMKNiYI8B+NE6x3jKemPZUxF7/wEC1MB2ik/nDNX8QujEN1OGm+Pq7hC9rYCLAPP7AX1+GDP1iB4lpTGhfwHJVMBziIXXrvhloqHqB9VTRXHe+xDS4mA+zHXfRCeThKN3zDZRTT2iHa28JkgAX4Ax8VnAlvzfVEAJaoXwiPscpkAG+UQ30sU8Fl2ueIdfiZ4K9YikfIZyZAgqaC4/EPzTXWHEEYon4v/EA14wE0XwQvMSvBz/4Gm9SvpwCtbAVwxUWsUd8Tt3FQ/Sr4gva2AhTFS0xRPy+eYKf6NfHVzi/A1Q9T8RP1NVZV6+eo3xHfUN3UWVAIddAaa+CnEI6aH40QtFV/Mh4jv6kA8+GrsecYCnfNVcBrnIYnPHABG01eByqjJ1qiSJJj4RD+obXGuuI3OmiVtbOgJS4jAIM0Xkifsx/uJn+BOlo/EJNxXIWfozcc4YE1+IR6xu6GcFTBGPzGZ5zHGJTU+oJYjX/oZ/R5AE6au4RKKAoXrXNHJ1zGd/SHo5UAUhN1VXQyLsAHJ5IeL6b/giOIxh/8lXfYgZ7wSrOWgYOwOnpJZzRAsfh9ahYDpN1sBsgNkBvgX04HuIT7mIJt8LcdoA2uoiQcsSHBPd8HT1DZZMk4aZKFX5jHAcMAAAAASUVORK5CYII="); 
+            break;
+        default: 
+            document.title = "Sunshine OS"; 
+            setFavicon(""); 
     }
 });
 
-/* BACKGROUND PREVIEW */
+
 document.querySelectorAll(".bg-preview").forEach(preview=>{
     preview.onclick = () => {
         document.body.style.backgroundImage = `url(${preview.dataset.bg})`;
     };
 });
 
-/* OPEN APP BY ID */
+
 function openApp(id){
     const win=document.getElementById(id);
     if(win) win.classList.add('show');
