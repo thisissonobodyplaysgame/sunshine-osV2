@@ -396,13 +396,61 @@ allApps.forEach(app => {
 function openSettings(){ document.getElementById('settings').classList.add('show'); }
 
 /* TAB CLOAK */
+/* TAB CLOAK SYSTEM (FIXED) */
+
+// current cloak
+let currentCloak = "default";
+
+// cloak presets
 const cloaks = {
-"Google": { title: "Google", icon: "https://www.google.com/favicon.ico" },
-"Gmail": { title: "Gmail", icon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" },
-"Schoology": { title: "Home | Schoology", icon: "https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico" },
-"Google Classroom": { title: "Classes", icon: "https://ssl.gstatic.com/classroom/favicon.png" },
-"Drive": { title: "My Drive - Google Drive", icon: "https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png" }
+    default: {
+        title: "Sunshine OS",
+        icon: ""
+    },
+    gmail: {
+        title: "Gmail",
+        icon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"
+    },
+    google: {
+        title: "Google",
+        icon: "https://www.google.com/favicon.ico"
+    },
+    schoology: {
+        title: "Home | Schoology",
+        icon: "https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"
+    }
 };
+
+// apply cloak
+function applyCloak(type){
+    const cloak = cloaks[type];
+    if(!cloak) return;
+
+    // set title
+    document.title = cloak.title;
+
+    // remove old favicon
+    const oldIcon = document.querySelector("link[rel='icon']");
+    if(oldIcon) oldIcon.remove();
+
+    // set new favicon (if exists)
+    if(cloak.icon){
+        const link = document.createElement("link");
+        link.rel = "icon";
+        link.href = cloak.icon;
+        document.head.appendChild(link);
+    }
+
+    currentCloak = type;
+}
+
+/* SETTINGS DROPDOWN */
+document.getElementById("tabCloak").addEventListener("change", e=>{
+    applyCloak(e.target.value);
+});
+
+/* APPLY ON LOAD (optional default) */
+applyCloak("default");
 
 /* BACKGROUND PREVIEW */
 document.querySelectorAll(".bg-preview").forEach(preview=>{
