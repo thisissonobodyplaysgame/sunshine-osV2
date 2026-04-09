@@ -301,6 +301,29 @@ document.querySelectorAll('.app').forEach(app=>{
 /* CLOSE BUTTONS */
 document.querySelectorAll('.close-btn').forEach(btn=>{ btn.onclick=()=>{ btn.parentElement.classList.remove('show'); }; });
 
+// OPEN APP FULLSCREEN
+const apps = document.querySelectorAll(".app");
+apps.forEach(app => {
+    app.addEventListener("click", () => {
+        const appName = app.getAttribute("data-app");
+        const appDiv = document.getElementById(`fullscreen-${appName}`);
+        if (appDiv) {
+            appDiv.classList.add("show");
+        }
+    });
+});
+
+// CLOSE BUTTON FUNCTIONALITY
+const closeButtons = document.querySelectorAll(".close-btn");
+closeButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        const parentApp = btn.parentElement; // the fullscreen-app div
+        const iframe = parentApp.querySelector("iframe");
+        if (iframe) iframe.src = ""; // stop iframe
+        parentApp.classList.remove("show"); // hide app
+    });
+});
+
 /* LIBRARY */
 const library=document.getElementById("library");
 const grid=document.getElementById("libraryGrid");
