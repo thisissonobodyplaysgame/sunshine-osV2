@@ -162,7 +162,7 @@ body {
     cursor: pointer;
 }
 
-/* SETTINGS */
+
 .bg-preview {
     width: 120px;
     height: 80px;
@@ -208,14 +208,14 @@ body {
 <div class="app" data-app="settings" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/2/23/System_Preferences_icon.png/250px-System_Preferences_icon.png')"></div>
 </div>
 
-<!-- APP LIBRARY -->
+
 <div class="app-library" id="library">
 <button class="close-btn" onclick="closeLibrary()">Close</button>
 <h2>App Library</h2>
 <div class="library-grid" id="libraryGrid"></div>
 </div>
 
-<!-- FULLSCREEN APPS -->
+
 <div class="fullscreen-app" id="netflix"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://mathiscoolz.b-cdn.net/"></iframe></div>
 <div class="fullscreen-app" id="psify"><button class="close-btn">Close</button><iframe src="https://thisissonobodyplaysgame.github.io/Chicken/"></iframe></div>
 <div class="fullscreen-app" id="google"><button class="close-btn">Close</button><iframe src="https://blockedmath.b-cdn.net/#home"></iframe></div>
@@ -228,7 +228,7 @@ body {
 <div class="fullscreen-app" id="blooket"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://blooketbot.schoolcheats.net"></iframe></div>
 <div class="fullscreen-app" id="gta"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://t9os.space/gtavc"></iframe></div>
 
-<!-- FULLSCREEN SETTINGS APP -->
+
 <div class="fullscreen-app" id="settings">
     <button class="close-btn">Close</button>
     <div style="padding: 40px; color: white; font-family: Arial, sans-serif;">
@@ -260,14 +260,14 @@ body {
 </div>
 
 <script>
-/* STARTUP */
+
 function enterOS(){ const startup=document.getElementById("startup"); startup.style.animation="fadeOutStartup 1s ease forwards"; setTimeout(()=>startup.style.display="none",1000); }
 
-/* CURSOR */
+
 const cursor=document.getElementById("cursor");
 document.addEventListener("mousemove",e=>{ cursor.style.left=e.clientX+"px"; cursor.style.top=e.clientY+"px"; });
 
-/* CLOCK */
+
 function updateTime(){
     const now=new Date();
     document.getElementById("time").textContent=now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
@@ -276,10 +276,10 @@ function updateTime(){
 setInterval(updateTime,1000);
 updateTime();
 
-/* PANIC KEY */
+
 document.addEventListener("keydown", e=>{ if(e.key==='`'){ window.location.href="https://www.google.com"; } });
 
-/* APP CLICKING */
+
 document.querySelectorAll('.app').forEach(app=>{
     app.onclick=()=>{
         const id=app.dataset.app;
@@ -287,7 +287,7 @@ document.querySelectorAll('.app').forEach(app=>{
         const win=document.getElementById(id);
         if(win) win.classList.add('show');
 
-        // TAB CLOAK
+
         if(cloaks[id]){
             document.title = cloaks[id].title;
             const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
@@ -298,21 +298,21 @@ document.querySelectorAll('.app').forEach(app=>{
     };
 });
 
-/* CLOSE BUTTONS */
+
 document.querySelectorAll('.close-btn').forEach(btn=>{ btn.onclick=()=>{ btn.parentElement.classList.remove('show'); }; });
 
-// Store the original iframe URLs
+
 const fullscreenApps = document.querySelectorAll(".fullscreen-app");
 fullscreenApps.forEach(app => {
     const iframe = app.querySelector("iframe");
     if (iframe) {
-        app.dataset.src = iframe.src; // save original src
+        app.dataset.src = iframe.src; 
     }
 });
 
 
 
-// OPEN APP FULLSCREEN
+
 const apps = document.querySelectorAll(".app");
 apps.forEach(app => {
     app.addEventListener("click", () => {
@@ -320,37 +320,37 @@ apps.forEach(app => {
         const appDiv = document.getElementById(`fullscreen-${appName}`);
         if (appDiv) {
             const iframe = appDiv.querySelector("iframe");
-            if (iframe) iframe.src = appDiv.dataset.src; // restore src
+            if (iframe) iframe.src = appDiv.dataset.src; 
             appDiv.classList.add("show");
         }
     });
 });
 
-// CLOSE BUTTON FUNCTIONALITY
+
 const closeButtons = document.querySelectorAll(".close-btn");
 closeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-        const parentApp = btn.parentElement; // the fullscreen-app div
+        const parentApp = btn.parentElement; 
         const iframe = parentApp.querySelector("iframe");
-        if (iframe) iframe.src = ""; // stop iframe
-        parentApp.classList.remove("show"); // hide app
+        if (iframe) iframe.src = ""; 
+        parentApp.classList.remove("show"); 
     });
 });
 
-// Store original URLs for your apps
+
 document.querySelectorAll(".fullscreen-app").forEach(app => {
     const iframe = app.querySelector("iframe");
-    if (iframe) app.dataset.src = iframe.src; // store original URL
+    if (iframe) app.dataset.src = iframe.src; 
 });
 
-// Open apps
+
 document.querySelectorAll(".app").forEach(app => {
     app.addEventListener("click", () => {
         const appName = app.getAttribute("data-app");
         const appDiv = document.getElementById(`fullscreen-${appName}`);
         if (appDiv) {
             const iframe = appDiv.querySelector("iframe");
-            if (iframe) iframe.src = appDiv.dataset.src; // restore original URL
+            if (iframe) iframe.src = appDiv.dataset.src; 
             appDiv.classList.add("show");
         }
     });
@@ -363,19 +363,19 @@ document.querySelectorAll(".close-btn").forEach(btn => {
         parentApp.classList.remove("show");
         const iframe = parentApp.querySelector("iframe");
         if (iframe) {
-            // Reset src only after hiding, so reopening works
+
             iframe.src = parentApp.dataset.src;
         }
     });
 });
 
-/* LIBRARY */
+
 const library=document.getElementById("library");
 const grid=document.getElementById("libraryGrid");
 function openLibrary(){library.classList.add("show");}
 function closeLibrary(){library.classList.remove("show");}
 
-/* POPULATE LIBRARY */
+
 grid.innerHTML = "";
 const allApps = [
     ...document.querySelectorAll(".dock .app"),
@@ -392,20 +392,17 @@ allApps.forEach(app => {
     grid.appendChild(clone);
 });
 
-/* SETTINGS */
+
 function openSettings(){ document.getElementById('settings').classList.add('show'); }
 
-/* TAB CLOAK */
-/* TAB CLOAK SYSTEM (FIXED) */
 
-// current cloak
 let currentCloak = "default";
 
-// cloak presets
+
 const cloaks = {
     default: {
         title: "Sunshine OS",
-        icon: "https://essential-coral-iwyzmp1bwo.edgeone.app/ChatGPT%20Image%20Apr%205,%202026,%2007_30_40%20PM.png"
+        icon: "https://clear-peach-ksmzmdcnda.edgeone.app/1000009614.jpg"
     },
     gmail: {
         title: "Gmail",
@@ -421,19 +418,19 @@ const cloaks = {
     }
 };
 
-// apply cloak
+
 function applyCloak(type){
     const cloak = cloaks[type];
     if(!cloak) return;
 
-    // set title
+
     document.title = cloak.title;
 
-    // remove old favicon
+
     const oldIcon = document.querySelector("link[rel='icon']");
     if(oldIcon) oldIcon.remove();
 
-    // set new favicon (if exists)
+
     if(cloak.icon){
         const link = document.createElement("link");
         link.rel = "icon";
@@ -444,25 +441,25 @@ function applyCloak(type){
     currentCloak = type;
 }
 
-/* SETTINGS DROPDOWN */
+
 document.getElementById("tabCloak").addEventListener("change", e=>{
     applyCloak(e.target.value);
 });
 
-/* APPLY ON LOAD (optional default) */
+
 applyCloak("default");
 
-/* BACKGROUND PREVIEW */
+
 document.querySelectorAll(".bg-preview").forEach(preview=>{
     preview.onclick = () => { document.body.style.backgroundImage = `url(${preview.dataset.bg})`; };
 });
 
-/* OPEN APP BY ID */
+
 function openApp(id){
     const win=document.getElementById(id);
     if(win) win.classList.add('show');
 
-    // TAB CLOAK
+
     if(cloaks[id]){
         document.title = cloaks[id].title;
         const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
