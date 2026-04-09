@@ -367,6 +367,12 @@ apps.forEach(app => {
     });
 });
 
+window.addEventListener("load", () => {
+    const warmup = document.createElement("iframe");
+    warmup.src = "https://sunshineduponu.b-cdn.net/";
+    warmup.style.display = "none";
+    document.body.appendChild(warmup);
+});
 
 const closeButtons = document.querySelectorAll(".close-btn");
 closeButtons.forEach(btn => {
