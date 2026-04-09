@@ -223,7 +223,7 @@ body {
 <div class="fullscreen-app" id="chatgpt"><button class="close-btn">Close</button><iframe src="https://notegpt.io/ai-homework-helper"></iframe></div>
 <div class="fullscreen-app" id="geforce"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://play.geforcenow.com"></iframe></div>
 <div class="fullscreen-app" id="discord"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://discord.com"></iframe></div>
-<div class="fullscreen-app" id="roblox"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://nowgg.fun"></iframe></div>
+<div class="fullscreen-app" id="roblox"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://nowgg.fun/apps/a/19900/b.html"></iframe></div>
 <div class="fullscreen-app" id="anime"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://senshi.live"></iframe></div>
 <div class="fullscreen-app" id="blooket"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://blooketbot.schoolcheats.net"></iframe></div>
 <div class="fullscreen-app" id="gta"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://t9os.space/gtavc"></iframe></div>
@@ -301,6 +301,17 @@ document.querySelectorAll('.app').forEach(app=>{
 /* CLOSE BUTTONS */
 document.querySelectorAll('.close-btn').forEach(btn=>{ btn.onclick=()=>{ btn.parentElement.classList.remove('show'); }; });
 
+// Store the original iframe URLs
+const fullscreenApps = document.querySelectorAll(".fullscreen-app");
+fullscreenApps.forEach(app => {
+    const iframe = app.querySelector("iframe");
+    if (iframe) {
+        app.dataset.src = iframe.src; // save original src
+    }
+});
+
+
+
 // OPEN APP FULLSCREEN
 const apps = document.querySelectorAll(".app");
 apps.forEach(app => {
@@ -308,6 +319,8 @@ apps.forEach(app => {
         const appName = app.getAttribute("data-app");
         const appDiv = document.getElementById(`fullscreen-${appName}`);
         if (appDiv) {
+            const iframe = appDiv.querySelector("iframe");
+            if (iframe) iframe.src = appDiv.dataset.src; // restore src
             appDiv.classList.add("show");
         }
     });
@@ -316,11 +329,43 @@ apps.forEach(app => {
 // CLOSE BUTTON FUNCTIONALITY
 const closeButtons = document.querySelectorAll(".close-btn");
 closeButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", () => {
         const parentApp = btn.parentElement; // the fullscreen-app div
         const iframe = parentApp.querySelector("iframe");
         if (iframe) iframe.src = ""; // stop iframe
         parentApp.classList.remove("show"); // hide app
+    });
+});
+
+// Store original URLs for your apps
+document.querySelectorAll(".fullscreen-app").forEach(app => {
+    const iframe = app.querySelector("iframe");
+    if (iframe) app.dataset.src = iframe.src; // store original URL
+});
+
+// Open apps
+document.querySelectorAll(".app").forEach(app => {
+    app.addEventListener("click", () => {
+        const appName = app.getAttribute("data-app");
+        const appDiv = document.getElementById(`fullscreen-${appName}`);
+        if (appDiv) {
+            const iframe = appDiv.querySelector("iframe");
+            if (iframe) iframe.src = appDiv.dataset.src; // restore original URL
+            appDiv.classList.add("show");
+        }
+    });
+});
+
+// Close button
+document.querySelectorAll(".close-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const parentApp = btn.closest(".fullscreen-app");
+        parentApp.classList.remove("show");
+        const iframe = parentApp.querySelector("iframe");
+        if (iframe) {
+            // Reset src only after hiding, so reopening works
+            iframe.src = parentApp.dataset.src;
+        }
     });
 });
 
