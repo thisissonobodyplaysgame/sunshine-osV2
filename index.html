@@ -72,8 +72,21 @@ body{
     transform:translate(-50%,-50%);
 }
 
-.time{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:96px}
-.day{position:absolute;top:62%;left:50%;transform:translateX(-50%);font-size:20px}
+.time{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:96px;
+}
+
+.day{
+    position:absolute;
+    top:62%;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:20px;
+}
 
 .dock{
     position:absolute;
@@ -182,12 +195,6 @@ body{
     background-position:center;
     cursor:pointer;
     border:2px solid rgba(255,255,255,.2);
-    transition:.2s;
-}
-
-.bg-preview:hover{
-    transform:scale(1.08);
-    border-color:#fff;
 }
 </style>
 </head>
@@ -210,68 +217,36 @@ body{
         <img src="https://static.thenounproject.com/png/5443009-200.png">
     </div>
 
-    <div class="app" data-app="netflix" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/500px-Netflix_icon.svg.png')"></div>
+    <div class="app" data-app="netflix" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg')"></div>
     <div class="app" data-app="psify" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/91/PlayStation_App_Icon.jpg')"></div>
     <div class="app" data-app="google" style="background-image:url('https://i.postimg.cc/rm9WmWjT/download.jpg')"></div>
     <div class="app" data-app="spotify" style="background-image:url('https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_1280.jpg')"></div>
     <div class="app" data-app="chatgpt" style="background-image:url('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/chatgpt-icon.png')"></div>
-    <div class="app" data-app="roblox" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/250px-Roblox_%282025%29_%28App_Icon%29.svg.png')"></div>
+    <div class="app" data-app="roblox" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f2/Roblox_%282025%29_%28App_Icon%29.svg')"></div>
     <div class="app" data-app="geforce" style="background-image:url('https://play-lh.googleusercontent.com/_-b_HQXrVyyhZSHj_BoE9u_-cxkcHDH_yLX5rDjJsFMIfsCNQs9F3QP4JvEFcWaSIz0=w240-h480-rw')"></div>
     <div class="app" data-app="discord" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoCkY_K9TX2dN21sxK2Np0a2vqnKKHGWP7Ow&s')"></div>
     <div class="app" data-app="anime" style="background-image:url('https://impossible-fuchsia-f7td4h9je2.edgeone.app/dduaesk-2b3e85d2-3116-4eb5-8260-f413d1fc670e.png')"></div>
-    <div class="app" data-app="settings" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/2/23/System_Preferences_icon.png/250px-System_Preferences_icon.png')"></div>
+    <div class="app" data-app="settings" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png')"></div>
 </div>
 
-    <div class="start-text">SUNSHINE OS</div>
-    <button class="enter-btn" onclick="enterOS()">ENTER</button>
-</div>
-​
-<div id="cursor"></div>
-​
-<div class="time" id="time"></div>
-<div class="day" id="day"></div>
-​
-<div class="dock">
-    <div class="library-icon" id="openLibrary">
-        <img src="https://static.thenounproject.com/png/5443009-200.png">
-    </div>
-​
-    <div class="app" data-app="netflix" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/500px-Netflix_icon.svg.png')"></div>
-    <div class="app" data-app="psify" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/91/PlayStation_App_Icon.jpg')"></div>
-    <div class="app" data-app="google" style="background-image:url('https://i.postimg.cc/rm9WmWjT/download.jpg')"></div>
-    <div class="app" data-app="spotify" style="background-image:url('https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_1280.jpg')"></div>
-    <div class="app" data-app="chatgpt" style="background-image:url('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/chatgpt-icon.png')"></div>
-    <div class="app" data-app="roblox" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/250px-Roblox_%282025%29_%28App_Icon%29.svg.png')"></div>
-    <div class="app" data-app="geforce" style="background-image:url('https://play-lh.googleusercontent.com/_-b_HQXrVyyhZSHj_BoE9u_-cxkcHDH_yLX5rDjJsFMIfsCNQs9F3QP4JvEFcWaSIz0=w240-h480-rw')"></div>
-    <div class="app" data-app="discord" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoCkY_K9TX2dN21sxK2Np0a2vqnKKHGWP7Ow&s')"></div>
-    <div class="app" data-app="anime" style="background-image:url('https://impossible-fuchsia-f7td4h9je2.edgeone.app/dduaesk-2b3e85d2-3116-4eb5-8260-f413d1fc670e.png')"></div>
-    <div class="app" data-app="settings" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/2/23/System_Preferences_icon.png/250px-System_Preferences_icon.png')"></div>
-</div>
-​
 <div class="app-library" id="library">
     <button class="close-btn">Close</button>
     <div class="library-grid" id="libraryGrid"></div>
 </div>
-​
+
 <div class="fullscreen-app" id="settings">
     <button class="close-btn">Close</button>
-​
     <div class="settings-box">
         <div class="setting-title">Settings</div>
-​
-        <div style="margin-bottom:30px;">
-            <label>Tab Cloak:</label><br>
-            <select id="tabCloak">
-                <option value="default">Default</option>
-                <option value="gmail">Gmail</option>
-                <option value="google">Google</option>
-                <option value="schoology">Schoology</option>
-            </select>
-        </div>
-​
-        <div>
-            <label>Backgrounds:</label>
-            <div style="display:flex;gap:15px;flex-wrap:wrap;margin-top:10px;">
+
+        <select id="tabCloak">
+            <option value="default">Default</option>
+            <option value="gmail">Gmail</option>
+            <option value="google">Google</option>
+            <option value="schoology">Schoology</option>
+        </select>
+
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
         <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/22088.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/22088.jpg');"></div>
         <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/25505.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/25505.jpg');"></div>
         <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/25476.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/25476.jpg');"></div>
@@ -282,66 +257,28 @@ body{
         <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/21162.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/21162.jpg');"></div>
         <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/25881.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/25881.jpg');"></div>
         <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/11167.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/11167.jpg');"></div>
-            </div>
-        </div>
-<div class="app-library" id="library">
-    <button class="close-btn">Close</button>
-    <div class="library-grid" id="libraryGrid"></div>
-</div>
-
-<div class="fullscreen-app" id="settings">
-    <button class="close-btn">Close</button>
-
-    <div class="settings-box">
-        <div class="setting-title">Settings</div>
-
-        <div style="margin-bottom:30px;">
-            <label>Tab Cloak:</label><br>
-            <select id="tabCloak">
-                <option value="default">Default</option>
-                <option value="gmail">Gmail</option>
-                <option value="google">Google</option>
-                <option value="schoology">Schoology</option>
-            </select>
-        </div>
-
-        <div>
-            <label>Backgrounds:</label>
-            <div style="display:flex;gap:15px;flex-wrap:wrap;margin-top:10px;">
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/22088.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/22088.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/25505.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/25505.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/25476.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/25476.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/26070.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/26070.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/24058.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/24058.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/21436.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/21436.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/21314.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/21314.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/21162.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/21162.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/25881.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/25881.jpg');"></div>
-        <div class="bg-preview" data-bg="https://4kwallpapers.com/images/walls/thumbs_3t/11167.jpg" style="background-image:url('https://4kwallpapers.com/images/walls/thumbs_3t/11167.jpg');"></div>
-            </div>
         </div>
     </div>
 </div>
 
 <div class="fullscreen-app" id="netflix"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://streamex.sh"></iframe></div>
 <div class="fullscreen-app" id="psify"><button class="close-btn">Close</button><iframe src="https://thisissonobodyplaysgame.github.io/Chicken/"></iframe></div>
-<div class="fullscreen-app" id="google"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://blockedmath.b-cdn.net/#home"></iframe></div>
+<div class="fullscreen-app" id="google"><button class="close-btn">Close</button><iframe src="https://blockedmath.b-cdn.net"></iframe></div>
 <div class="fullscreen-app" id="spotify"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://music.youtube.com/?hl=en"></iframe></div>
-<div class="fullscreen-app" id="chatgpt"><button class="close-btn">Close</button><iframe src="https://notegpt.io/ai-homework-helper"></iframe></div>
+<div class="fullscreen-app" id="chatgpt"><button class="close-btn">Close</button><iframe src="https://notegpt.io"></iframe></div>
+<div class="fullscreen-app" id="roblox"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://nowgg.fun/apps/a/19900/b.html"></iframe></div>
 <div class="fullscreen-app" id="geforce"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://play.geforcenow.com"></iframe></div>
 <div class="fullscreen-app" id="discord"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://discord.com"></iframe></div>
-<div class="fullscreen-app" id="roblox"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://nowgg.fun/apps/a/19900/b.html"></iframe></div>
 <div class="fullscreen-app" id="anime"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://senshi.live"></iframe></div>
-
 <div class="fullscreen-app" id="blooket"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://blooketbot.schoolcheats.net"></iframe></div>
 <div class="fullscreen-app" id="gta"><button class="close-btn">Close</button><iframe src="https://sunshineduponu.b-cdn.net/embed.html?url=https://t9os.space/gtavc"></iframe></div>
 
 <script>
 
 function enterOS(){
-    const startup=document.getElementById("startup");
-    startup.style.animation="fadeOutStartup 1s ease forwards";
-    setTimeout(()=>startup.style.display="none",1000);
+    const s=document.getElementById("startup");
+    s.style.animation="fadeOutStartup 1s forwards";
+    setTimeout(()=>s.style.display="none",1000);
 }
 
 const cursor=document.getElementById("cursor");
@@ -364,40 +301,32 @@ function closeAll(){
     document.querySelectorAll(".fullscreen-app").forEach(a=>a.classList.remove("show"));
 }
 
-function openSettings(){
-    closeAll();
-    document.getElementById("settings").classList.add("show");
-}
-
 document.querySelectorAll(".app").forEach(app=>{
     app.onclick=()=>{
         const id=app.dataset.app;
-        if(id==="settings") return openSettings();
         closeAll();
         document.getElementById(id)?.classList.add("show");
     };
 });
 
 document.querySelectorAll(".close-btn").forEach(btn=>{
-    btn.onclick=()=>{
-        btn.closest(".fullscreen-app")?.classList.remove("show");
-    };
+    btn.onclick=()=>btn.closest(".fullscreen-app,.app-library")?.classList.remove("show");
 });
 
 const library=document.getElementById("library");
 const libraryGrid=document.getElementById("libraryGrid");
 
 const apps=[
-    {id:"netflix",icon:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/500px-Netflix_icon.svg.png"},
+    {id:"netflix",icon:"https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg"},
     {id:"psify",icon:"https://upload.wikimedia.org/wikipedia/commons/9/91/PlayStation_App_Icon.jpg"},
     {id:"google",icon:"https://i.postimg.cc/rm9WmWjT/download.jpg"},
     {id:"spotify",icon:"https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_1280.jpg"},
     {id:"chatgpt",icon:"https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/chatgpt-icon.png"},
-    {id:"roblox",icon:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/250px-Roblox_%282025%29_%28App_Icon%29.svg.png"},
+    {id:"roblox",icon:"https://upload.wikimedia.org/wikipedia/commons/f/f2/Roblox_%282025%29_%28App_Icon%29.svg"},
     {id:"geforce",icon:"https://play-lh.googleusercontent.com/_-b_HQXrVyyhZSHj_BoE9u_-cxkcHDH_yLX5rDjJsFMIfsCNQs9F3QP4JvEFcWaSIz0=w240-h480-rw"},
     {id:"discord",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoCkY_K9TX2dN21sxK2Np0a2vqnKKHGWP7Ow&s"},
     {id:"anime",icon:"https://impossible-fuchsia-f7td4h9je2.edgeone.app/dduaesk-2b3e85d2-3116-4eb5-8260-f413d1fc670e.png"},
-    {id:"settings",icon:"https://upload.wikimedia.org/wikipedia/en/thumb/2/23/System_Preferences_icon.png/250px-System_Preferences_icon.png"},
+    {id:"settings",icon:"https://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png"},
     {id:"blooket",icon:"https://cdn.phototourl.com/free/2026-04-10-57271e5e-5863-43a7-8f68-17a762ebb2aa.jpg"},
     {id:"gta",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3w1PK7yW2YbG76OJw1XPe1ke99ucQ93B9nUmNEmXghYGKghLI4BpStc2Y7GPMkiE35ReSCkUnNO6E7FvwZIU-fDXpVk7OaeiJF6RhKDl05BIZf3qWdu8W-TLuWaaeHYk&s=10"}
 ];
@@ -419,46 +348,11 @@ function renderLibrary(){
 
 renderLibrary();
 
-document.getElementById("openLibrary").onclick=()=>{
-    library.classList.add("show");
-};
-
-document.querySelector(".app-library .close-btn").onclick=()=>{
-    library.classList.remove("show");
-};
+document.getElementById("openLibrary").onclick=()=>library.classList.add("show");
 
 document.querySelectorAll(".bg-preview").forEach(b=>{
-    b.onclick=()=>{
-        document.body.style.backgroundImage=`url(${b.dataset.bg})`;
-    };
+    b.onclick=()=>document.body.style.backgroundImage=`url(${b.dataset.bg})`;
 });
-
-const cloaks={
-    default:{title:"Sunshine OS",icon:"https://ssl.gstatic.com/images/branding/product/1x/chrome_512dp.png"},
-    gmail:{title:"Gmail",icon:"https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"},
-    google:{title:"Google",icon:"https://www.google.com/favicon.ico"},
-    schoology:{title:"Schoology",icon:"https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"}
-};
-
-function applyCloak(type){
-    const c=cloaks[type];
-    if(!c) return;
-    document.title=c.title;
-
-    let link=document.querySelector("link[rel='icon']");
-    if(link) link.remove();
-
-    link=document.createElement("link");
-    link.rel="icon";
-    link.href=c.icon;
-    document.head.appendChild(link);
-}
-
-document.getElementById("tabCloak").addEventListener("change",e=>{
-    applyCloak(e.target.value);
-});
-
-applyCloak("default");
 
 </script>
 
